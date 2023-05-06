@@ -25,20 +25,26 @@ class ApplyShipping
         $request
     )
     {
+        $pincode = $request->getDestPostcode();
         // $pincode=560015;
-      $collection = $this->_model->getCollection()
-   ->addFieldToFilter('pincode',array('eq' => $pincode))
-   ->addFieldToFilter('enable', array('eq' => "Yes"));
 
-   $count = $collection->getData();
+//       $collection = $this->_model->getCollection()
+//    ->addFieldToFilter('pincode',array('eq' => $pincode))
+//    ->addFieldToFilter('enable', array('eq' => "Yes"));
+
+$uiModule = $this->_model->getCollection()
+            ->addFieldToFilter('pincode', ['eq' => $pincode])
+            ->getFirstItem();
+
+   //$count = $collection->getData();
 
 
             // Enter Shipping Code here instead of 'freeshipping'
-        if ($carrierCode == 'freeshipping' && count($count) == 0) {
+        if ($carrierCode === 'freeshipping' && $uiModule->getEnable() === 'No') {
            // To disable the shipping method return false
             return false;
         } 
            // To enable the shipping method
-            return $proceed($carrierCode, $request);
+           return $proceed($carrierCode, $request);
     }
 }

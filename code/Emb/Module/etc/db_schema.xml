@@ -12,8 +12,13 @@ xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/et
       <column xsi:type="varchar" name="enable" nullable="false" comment="enable" />
       
      
+<constraint xsi:type="unique" referenceId="UI_MODULE_PINCODE">
+            <column name="pincode"/>
+        </constraint>
+
       <constraint xsi:type="primary" referenceId="PRIMARY">
          <column name="id" />
       </constraint>
+
    </table>
 </schema>
