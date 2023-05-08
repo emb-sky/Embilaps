@@ -1,5 +1,6 @@
-<?php 
+<?php
 namespace Emb\Module\Model;
+
 use Magento\Framework\Model\AbstractModel;
 
 class Sample extends AbstractModel

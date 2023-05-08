@@ -48,21 +48,6 @@
             </item>
         </argument>
 
-        <!-- <field name="id">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Id</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">id</item>
-                    <item name="dataScope" xsi:type="string">id </item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
-                </item>
-            </argument>
-        </field> -->
-        
         <field name="pincode">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">

@@ -2,11 +2,13 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
 <menu>
+
 <add id="Emb_Module::module"
 title="PINCODES" translate="title"
 module="Emb_Module"
-sortOrder="20"
+sortOrder="10"
 resource="Emb_Module::module"/>
+
 <add id="Emb_Module::customer_manage" title="ALL PINCODES" translate="title" module="Emb_Module" 
 sortOrder="10" parent="Emb_Module::module" action="module/sample" resource="Emb_Module::manage"/>
 </menu>

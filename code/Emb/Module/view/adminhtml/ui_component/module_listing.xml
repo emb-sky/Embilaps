@@ -16,7 +16,7 @@
             <button name="add">
                 <url path="*/*/form"/>
                 <class>primary</class>
-                <label translate="true">Add New Pincode</label>
+                <label translate="true">Add new PINCODE here</label>
             </button>
         </buttons>
         <spinner>cms_block_columns</spinner>
@@ -90,16 +90,7 @@
             </settings>
             </action>
 
-            <!-- <action name="edit">
-                <settings>
-                    <callback>
-                        <target>editSelected</target>
-                        <provider>module_listing.module_listing.cms_block_columns_editor</provider>
-                    </callback>
-                    <type>edit</type>
-                    <label translate="true">Edit</label>
-                </settings>
-            </action> -->
+            
         </massaction>
         <paging name="listing_paging"/>
     </listingToolbar>
@@ -108,7 +99,7 @@
             <editorConfig>
                 <param name="clientConfig" xsi:type="array">
                 <item name="saveUrl" xsi:type="url" path="*/*/inlineEdit"/>
-                    <!-- <item name="saveUrl" xsi:type="url" path="cms/block/inlineEdit"/> -->
+                    
                     <item name="validateBeforeSave" xsi:type="boolean">false</item>
                 </param>
                 <param name="indexField" xsi:type="string">id</param>
@@ -137,6 +128,15 @@
                 <filter>text</filter>
                 <dataType>text</dataType>
                 <label translate="true">Pincode</label>
+                
+            </settings>
+        </column>
+
+        <column name="id">
+            <settings>
+                <filter>text</filter>
+                <dataType>text</dataType>
+                <label translate="true">ID</label>
                 
             </settings>
         </column>
