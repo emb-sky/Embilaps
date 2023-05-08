@@ -2,18 +2,22 @@
 
 namespace Hiddentechies\Base\Block\Adminhtml\System\Config\Form;
 
-class Info extends \Magento\Config\Block\System\Config\Form\Field {
+class Info extends \Magento\Config\Block\System\Config\Form\Field
+{
 
     protected $moduleList;
 
     public function __construct(
-    \Magento\Framework\Module\ModuleListInterface $moduleList, \Magento\Backend\Block\Template\Context $context, array $data = []
+        \Magento\Framework\Module\ModuleListInterface $moduleList,
+        \Magento\Backend\Block\Template\Context $context,
+        array $data = []
     ) {
         $this->moduleList = $moduleList;
         parent::__construct($context, $data);
     }
 
-    public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element) {
+    public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
+    {
         $html = '';
 
         if (in_array('curl', get_loaded_extensions())) {
@@ -43,5 +47,4 @@ class Info extends \Magento\Config\Block\System\Config\Form\Field {
 
         return $html;
     }
-
 }

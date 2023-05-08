@@ -8,18 +8,22 @@ namespace Hiddentechies\Bentriz\Block\Adminhtml\System\Config\Form;
 
 use Magento\Store\Model\ScopeInterface;
 
-class Info extends \Magento\Config\Block\System\Config\Form\Field {
+class Info extends \Magento\Config\Block\System\Config\Form\Field
+{
 
     protected $moduleList;
 
     public function __construct(
-    \Magento\Framework\Module\ModuleListInterface $moduleList, \Magento\Backend\Block\Template\Context $context, array $data = []
+        \Magento\Framework\Module\ModuleListInterface $moduleList,
+        \Magento\Backend\Block\Template\Context $context,
+        array $data = []
     ) {
         parent::__construct($context, $data);
         $this->moduleList = $moduleList;
     }
 
-    public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element) {
+    public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
+    {
         $m = $this->moduleList->getOne($this->getModuleName());
         $html = '<div style="padding:12px;background-color:#F1F1F1;border:1px solid #d1d1d1;margin-bottom:5px;font-weight: 600;">
             Bentriz: Free Responsive Theme <span style="color: #eb0e0e;">v' . $m['setup_version'] . '</span> was developed by <a href="http://www.hiddentechies.com/" target="_blank">HiddenTechies</a>.
@@ -56,5 +60,4 @@ class Info extends \Magento\Config\Block\System\Config\Form\Field {
         
         return $html;
     }
-
 }

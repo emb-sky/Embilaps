@@ -9,7 +9,8 @@ namespace Hiddentechies\Bentriz\Setup;
 
 use Magento\Framework\Setup;
 
-class Installer implements Setup\SampleData\InstallerInterface {
+class Installer implements Setup\SampleData\InstallerInterface
+{
 
     /**
      * @var \Magento\CmsSampleData\Model\Page
@@ -26,8 +27,8 @@ class Installer implements Setup\SampleData\InstallerInterface {
      * @param \Hiddentechies\Bentriz\Model\Block $block
      */
     public function __construct(
-    \Hiddentechies\Bentriz\Model\Page $page, 
-            \Hiddentechies\Bentriz\Model\Block $block
+        \Hiddentechies\Bentriz\Model\Page $page,
+        \Hiddentechies\Bentriz\Model\Block $block
     ) {
         $this->page = $page;
         $this->block = $block;
@@ -36,21 +37,21 @@ class Installer implements Setup\SampleData\InstallerInterface {
     /**
      * {@inheritdoc}
      */
-    public function install() {
+    public function install()
+    {
 
         //$this->page->install(['Hiddentechies_Bentriz::fixtures/pages/pages.csv']);
         $this->page->install(
-                [
+            [
 
                     'Hiddentechies_Bentriz::DemoPages/pages.csv',
                 ]
         );
         $this->block->install(
-                [
+            [
 
                     'Hiddentechies_Bentriz::DemoBlocks/blocks.csv',
                 ]
         );
     }
-
 }

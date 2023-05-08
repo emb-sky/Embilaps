@@ -30,7 +30,6 @@ use Magento\Store\Model\StoreManagerInterface;
 use Magento\Customer\Model\ResourceModel\AddressRepository;
 use Magento\Customer\Model\ResourceModel\Customer;
 
-
 class CustomerRepository extends \Magento\Customer\Model\ResourceModel\CustomerRepository
 {
     /**
@@ -290,11 +289,11 @@ class CustomerRepository extends \Magento\Customer\Model\ResourceModel\CustomerR
         return $savedCustomer;
     }
  /**
-     * Populate customer model with previous data
-     *
-     * @param CustomerModel $customerModel
-     * @param ?array $prevCustomerDataArr
-     */
+  * Populate customer model with previous data
+  *
+  * @param CustomerModel $customerModel
+  * @param ?array $prevCustomerDataArr
+  */
     private function populateWithOrigData(CustomerModel $customerModel, ?array $prevCustomerDataArr)
     {
         if (!empty($prevCustomerDataArr)) {
@@ -364,12 +363,12 @@ class CustomerRepository extends \Magento\Customer\Model\ResourceModel\CustomerR
         }
     }
      /**
-     * Set ignore_validation_flag to skip model validation
-     *
-     * @param array $customerArray
-     * @param Customer $customerModel
-     * @return void
-     */
+      * Set ignore_validation_flag to skip model validation
+      *
+      * @param array $customerArray
+      * @param Customer $customerModel
+      * @return void
+      */
     private function setValidationFlag($customerArray, $customerModel)
     {
         if (isset($customerArray['ignore_validation_flag'])) {

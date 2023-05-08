@@ -2,7 +2,6 @@
 
 namespace Hiddentechies\Bentriz\Setup;
 
-
 use Magento\Framework\Setup;
 use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
@@ -13,7 +12,8 @@ use Magento\Framework\Setup\ModuleDataSetupInterface;
 /**
  * @codeCoverageIgnore
  */
-class InstallData implements InstallDataInterface {
+class InstallData implements InstallDataInterface
+{
 
     /**
      * EAV setup factory
@@ -27,7 +27,8 @@ class InstallData implements InstallDataInterface {
      *
      * @param EavSetupFactory $eavSetupFactory
      */
-    public function __construct(EavSetupFactory $eavSetupFactory, Setup\SampleData\Executor $executor, Installer $installer) {
+    public function __construct(EavSetupFactory $eavSetupFactory, Setup\SampleData\Executor $executor, Installer $installer)
+    {
         $this->eavSetupFactory = $eavSetupFactory;
         $this->executor = $executor;
         $this->installer = $installer;
@@ -36,12 +37,15 @@ class InstallData implements InstallDataInterface {
     /**
      * {@inheritdoc}
      */
-    public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context) {
+    public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
+    {
         /** @var EavSetup $eavSetup */
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
         
         $eavSetup->addAttribute(
-                \Magento\Catalog\Model\Product::ENTITY, 'is_featured', [
+            \Magento\Catalog\Model\Product::ENTITY,
+            'is_featured',
+            [
             'group' => 'Product Details',
             'type' => 'int',
             'sort_order' => 102,
@@ -63,7 +67,8 @@ class InstallData implements InstallDataInterface {
             'used_in_product_listing' => true,
             'unique' => false,
             'apply_to' => 'simple,configurable,virtual,bundle,downloadable'
-        ]);
+                ]
+        );
         $this->executor->exec($this->installer);
     }
 }

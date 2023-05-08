@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="module_listing_data_source" 
+                xsi:type="string">Emb\Module\Model\ResourceModel\Sample\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Emb\Module\Model\ResourceModel\Sample\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">ui_module</argument>
+            <argument name="eventPrefix" xsi:type="string">sample_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">sample_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Emb\Module\Model\ResourceModel\Sample</argument>
+        </arguments>
+    </type> 
+
+
+
+    <type name="Magento\Shipping\Model\Shipping">
+    <plugin disabled="false" name="Emb_Module_Shipping" sortOrder="10"
+            type="Emb\Module\Plugin\ApplyShipping"/>
+    </type>
+
+
+
+   </config>

@@ -1,4 +1,4 @@
-<?php  
+<?php
 /**
  * Copyright © 2015 Magento. All rights reserved.
  * See COPYING.txt for license details.
@@ -8,7 +8,7 @@ namespace Hiddentechies\Bentriz\Model\Block;
 /**
  * Class Converter
  */
-class Converter  
+class Converter
 {
     /**
      * @var \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory

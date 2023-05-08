@@ -9,62 +9,56 @@ use Magento\Payment\Helper\Data as paymentData;
 use Magento\Payment\Model\Method\AbstractMethod;
 use Magento\Quote\Api\Data\CartInterface;
 use Magento\OfflinePayments\Model\Cashondelivery;
-
-use Magento\Customer\Model\CustomerFactory; 
+use Magento\Customer\Model\CustomerFactory;
+use Magento\Catalog\Model\ProductFactory;
 
 class DisableCashOnDelivery implements ObserverInterface
 {
-    protected $customerFactory; 
-    public function __construct( CustomerFactory $customerFactory)
-     { 
-        $this->customerFactory = $customerFactory; 
-     } 
+    protected $customerFactory;
+    protected $productFactory;
+
+    public function __construct(
+        CustomerFactory $customerFactory,
+        ProductFactory $productFactory
+    ) {
+        $this->customerFactory = $customerFactory;
+        $this->productFactory = $productFactory;
+    }
+
     public function execute(Observer $observer)
     {
-        //$quote = $observer->getEvent()->getQuote();
-       //echo $quote->getId();
-       //die();
-         /** @var DataObject $result */
-
-         $result = $observer->getResult();
-         /** @var AbstractMethod $methodInstance */
-
-         $methodInstance = $observer->getMethodInstance();
-         /** @var CartInterface $quote */
-
-
-         $paymentCode = $methodInstance->getCode();
-
-
-         $quote = $observer->getEvent()->getQuote();
-         if ($quote && $quote->getId()) 
-         {
+        /** @var DataObject $result */
+        $result = $observer->getResult();
+        
+        /** @var AbstractMethod $methodInstance */
+        $methodInstance = $observer->getMethodInstance();
+        
+        /** @var CartInterface $quote */
+        $quote = $observer->getEvent()->getQuote();
+        
+        if ($quote && $quote->getId()) {
+            $paymentCode = $methodInstance->getCode();
             
-            if($paymentCode === Cashondelivery::PAYMENT_METHOD_CASHONDELIVERY_CODE){
-                $items=$quote->getAllItems();
-                foreach($items as $item){
-                    $product = \Magento\Framework\App\ObjectManager::getInstance() ->create(\Magento\Catalog\Model\Product::class)->load($item->getProductId()); 
+            if ($paymentCode === Cashondelivery::PAYMENT_METHOD_CASHONDELIVERY_CODE) {
+                $items = $quote->getAllItems();
+                
+                foreach ($items as $item) {
+                    $product = $this->productFactory->create()->load($item->getProductId());
                     $attributeValue = $product->getData('cod_enable');
-                    //print_r($attributeValue);
-                    //die();
                     
-                    if($attributeValue){
-                    $result->setData('is_available', false);
-                    break;
+                    if ($attributeValue) {
+                        $result->setData('is_available', false);
+                        break;
                     }
                 }
-                    $customerId = $quote->getCustomerId(); 
-                    $customer = $this->customerFactory->create()->load($customerId); 
-                    if($customer->getCustCodEnable())
-                    {
-                        $result->setData('is_available', false);
-                    } 
+                
+                $customerId = $quote->getCustomerId();
+                $customer = $this->customerFactory->create()->load($customerId);
+                
+                if ($customer->getCustCodEnable()) {
+                    $result->setData('is_available', false);
+                }
             }
-
         }
     }
 }
-        
-       
-
-
