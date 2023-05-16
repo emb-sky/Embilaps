@@ -1,14 +1,10 @@
 <?php
 
 namespace Emb\Module\Block\Adminhtml\Button;
-
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
-
 class Delete extends Generic implements ButtonProviderInterface
 {
-    
-
-       /**
+        /**
         * @inheritDoc
         */
 

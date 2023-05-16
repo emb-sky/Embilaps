@@ -1,9 +1,6 @@
 <?php
-
 namespace Emb\Module\Plugin;
-
 use Emb\Module\Model\Sample;
-
 class ApplyShipping
 {
 
@@ -31,7 +28,7 @@ class ApplyShipping
             ->addFieldToFilter('pincode', ['eq' => $pincode])
             ->getFirstItem();
 
-
+   //$count = $collection->getData();
 
 
             // Enter Shipping Code here instead of 'freeshipping'

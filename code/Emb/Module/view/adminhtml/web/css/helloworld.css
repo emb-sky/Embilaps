@@ -1,0 +1,11 @@
+
+/* .admin__menu .level-0.item-module > a:before {
+    content: url('../images/brand (1).svg');
+    height: 28px;
+    margin: 0 auto;
+    width: 30px;
+} */
+
+.admin__menu #Emb_Module::module:before {
+    background-image: url('../images/icon.svg');
+}
